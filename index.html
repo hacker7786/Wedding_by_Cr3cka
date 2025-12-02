@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>It's Himanshu (Cr3cka) - Wedding Eligibility</title>
+  <style>
+    body{font-family:Arial, sans-serif;background:#fff7f3;color:#333;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+    .card{width:360px;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.12);padding:22px;text-align:center}
+    h1{margin:4px 0 8px 0;color:#6b1e6b;font-family:Georgia,serif}
+    p.subtitle{margin:0 0 16px 0;color:#6b1e6b}
+    label{display:block;text-align:left;margin-top:10px;font-weight:600}
+    input[type=number]{width:100%;padding:10px;margin-top:6px;border-radius:6px;border:1px solid #ddd;font-size:14px}
+    button{margin-top:16px;width:100%;padding:12px;border-radius:8px;border:none;background:#6b1e6b;color:#fff;font-size:16px;cursor:pointer}
+    .result{margin-top:14px;font-size:16px;font-weight:700;padding:12px;border-radius:8px}
+    .gif-wrap{margin-top:12px}
+    footer{margin-top:18px;color:#6b1e6b;font-style:italic}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>It's Himanshu (Cr3cka)</h1>
+    <p class="subtitle">Wedding Eligibility Checker</p>
+
+    <label>Enter Male Age:</label>
+    <input id="male" type="number" placeholder="Male age" />
+
+    <label>Enter Female Age:</label>
+    <input id="female" type="number" placeholder="Female age" />
+
+    <button id="checkBtn">Check Eligibility</button>
+
+    <div id="result" class="result" style="display:none"></div>
+    <div class="gif-wrap">
+      <img id="clapGif" src="himanshu_clap.gif" alt="clap" style="max-width:220px;display:none;border-radius:8px"/>
+    </div>
+
+    <footer>Wishing you joy and togetherness!</footer>
+  </div>
+
+  <script>
+    const maleEl = document.getElementById('male');
+    const femaleEl = document.getElementById('female');
+    const resultEl = document.getElementById('result');
+    const clap = document.getElementById('clapGif');
+    document.getElementById('checkBtn').addEventListener('click', function(){
+      const a = parseInt(maleEl.value, 10);
+      const b = parseInt(femaleEl.value, 10);
+
+      if (isNaN(a) || isNaN(b)) {
+        alert('Please enter valid ages');
+        return;
+      }
+
+      // Your exact conditions
+      if (a >= 21 && b <= 18) {
+        resultEl.style.display='block';
+        resultEl.style.background='#e8f7ea';
+        resultEl.style.color='green';
+        resultEl.textContent = 'Male is eligible but female not eligible';
+        clap.style.display='none';
+      } else if (a < 21 && b >= 18) {
+        resultEl.style.display='block';
+        resultEl.style.background='#fff3e0';
+        resultEl.style.color='#d35400';
+        resultEl.textContent = 'Female is eligible but male is not eligible';
+        clap.style.display='none';
+      } else if (a >= 21 && b < 18) {
+        resultEl.style.display='block';
+        resultEl.style.background='#e8f7ea';
+        resultEl.style.color='green';
+        resultEl.textContent = 'Male is eligible but female is not eligible';
+        clap.style.display='none';
+      } else if (a >= 21 && b >= 18) {
+        resultEl.style.display='block';
+        resultEl.style.background='#e6ffe6';
+        resultEl.style.color='#0a7a0a';
+        resultEl.textContent = 'Both are eligible for wedding';
+        clap.style.display='block';
+      } else {
+        resultEl.style.display='block';
+        resultEl.style.background='#ffe6e6';
+        resultEl.style.color='#a80505';
+        resultEl.textContent = 'Both are not eligible for wedding';
+        clap.style.display='none';
+      }
+    });
+  </script>
+</body>
+</html>
